@@ -86,7 +86,7 @@ if ($isAdmin) {
     </form>
   </div>
 <?php else: ?>
-  <header><div class="wrap"><b>XG<span>TECH</span> · Admin</b>
+  <header><div class="wrap"><b style="display:flex;align-items:center;gap:12px"><img src="logo-1.png" alt="XGTECH" height="36" style="border-radius:6px"> Admin</b>
     <form method="post"><input type="hidden" name="csrf" value="<?= e($csrf) ?>"><button class="btn ghost small" name="action" value="logout">Log out</button></form>
   </div></header>
   <div class="wrap">

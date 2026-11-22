@@ -26,5 +26,10 @@ foreach ($pages as $src => $dest) {
   file_put_contents("$out/$dest", $html);
   echo "built docs/$dest (" . strlen($html) . " bytes)\n";
 }
+// Copy images used by the pages
+foreach (glob($root . '/*.{png,jpg,jpeg,svg,webp,ico}', GLOB_BRACE) as $img) {
+  copy($img, $out . '/' . basename($img));
+  echo 'copied docs/' . basename($img) . "\n";
+}
 file_put_contents("$out/.nojekyll", '');   // serve files as-is on GitHub Pages
 echo "done\n";

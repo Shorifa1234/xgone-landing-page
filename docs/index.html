@@ -35,10 +35,9 @@
     /* Header */
     .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:-.5px;color:var(--navy)}
-    .brand .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--navy),#0d3976);display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800}
-    .brand .mark b{color:var(--green2)}
-    .brand span{color:var(--green)}
+    .brand{display:inline-flex;align-items:center;text-decoration:none;border-radius:10px;overflow:hidden;line-height:0;box-shadow:0 2px 8px rgba(6,38,93,.18);transition:transform .15s}
+    .brand:hover{transform:translateY(-1px)}
+    .brand img{display:block;height:44px;width:auto}
     .navlinks{display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:600}
     .navlinks a:not(.btn){text-decoration:none;color:#33415c}.navlinks a:not(.btn):hover{color:var(--green)}
     .navlinks .btn{padding:11px 18px;font-size:14px}
@@ -212,7 +211,7 @@
     /* Footer */
     footer{background:var(--navy3);color:#b9c6dc;padding:56px 0 26px;font-size:14px}
     .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
-    footer .brand{color:#fff;margin-bottom:12px}
+    footer .brand{margin-bottom:14px;box-shadow:0 0 0 1px rgba(255,255,255,.12)}
     footer h4{color:#fff;margin:0 0 12px;font-size:14px}
     footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
     footer a{text-decoration:none}footer a:hover{color:var(--green2)}
@@ -260,7 +259,7 @@
 
   <header class="topbar">
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="XGTECH home"><span class="mark">X<b>G</b></span>XG<span>TECH</span></a>
+      <a class="brand" href="#top" aria-label="XGTECH home"><img src="logo-1.png" alt="XGTECH" width="158" height="44"></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">☰</button>
       <nav class="navlinks" id="menu" aria-label="Main navigation">
         <a href="#about">About</a>
@@ -534,7 +533,7 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="brand" href="#top"><span class="mark">X<b>G</b></span>XG<span>TECH</span></a>
+          <a class="brand" href="#top" aria-label="XGTECH home"><img src="logo-1.png" alt="XGTECH" width="158" height="44" loading="lazy"></a>
           <p style="margin:0;max-width:320px">Technology That Empowers Your Business. Makers of XGOne, the all-in-one business management platform.</p>
         </div>
         <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#industries">Industries</a></li><li><a href="#contact">Contact</a></li></ul></div>

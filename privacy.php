@@ -1,4 +1,8 @@
-<?php require __DIR__ . '/db.php'; ?>
+<?php
+require __DIR__ . '/db.php';
+$static = defined('XG_STATIC');            // GitHub Pages (HTML-only) build
+$home   = $static ? 'index.html' : 'index.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +29,7 @@
   </style>
 </head>
 <body>
-  <header><div class="wrap"><a href="index.php">XG<span>TECH</span></a></div></header>
+  <header><div class="wrap"><a href="<?= $home ?>">XG<span>TECH</span></a></div></header>
   <main class="wrap">
     <h1>Privacy Policy</h1>
     <p class="muted">Last updated: 22 November 2026</p>
@@ -41,6 +45,9 @@
 
     <h2 id="location">Live GPS demo: location data</h2>
     <p>Our website has a live GPS tracking demo. When you click <em>"Show my location"</em>, your browser asks for permission to use your location.</p>
+    <?php if ($static): ?>
+    <p>Your location is shown only on your own screen. It is <strong>never sent to us or stored anywhere</strong>, and it is gone when you close the page or click <em>"Stop tracking"</em>.</p>
+    <?php else: ?>
     <ul>
       <li><strong>If you do not tick the sharing box,</strong> your location is shown only on your own screen. It is never sent to us.</li>
       <li><strong>If you tick "Share my location with XGTECH",</strong> we store your location once for that session.</li>
@@ -53,13 +60,20 @@
       <tr><th>Who can see it</th><td>Only authorised XGTECH staff, through a password-protected page.</td></tr>
     </table>
     <div class="box"><strong>Withdrawing consent:</strong> you can delete your shared location at any time using the <em>"Delete my shared location"</em> button in the demo on the same device and browser, or by emailing <a href="mailto:info@xgtech.co.uk">info@xgtech.co.uk</a> with the approximate date and time you shared it.</div>
+    <?php endif; ?>
 
     <h2>Contact form</h2>
-    <p>When you send an enquiry we receive the details you enter: your name, company, email, phone, industry and message. We use them to reply to you and arrange a demo you have asked for. The lawful basis is our legitimate interest in responding to enquiries and taking steps at your request before entering into a contract. Your enquiry is stored securely on our website (in a password-protected area) and sent to us by email. We also send you an email confirming we received your request. Stored enquiries are deleted automatically after <?= ENQ_RETENTION_DAYS ?> days.</p>
+    <p>When you send an enquiry we receive the details you enter: your name, company, email, phone, industry and message. We use them to reply to you and arrange a demo you have asked for. The lawful basis is our legitimate interest in responding to enquiries and taking steps at your request before entering into a contract.
+    <?php if ($static): ?>
+    The form opens your own email app with your request filled in. Nothing is sent until you press Send in your email app, and the details are not stored on this website.</p>
+    <?php else: ?>
+    Your enquiry is stored securely on our website (in a password-protected area) and sent to us by email. We also send you an email confirming we received your request. Stored enquiries are deleted automatically after <?= ENQ_RETENTION_DAYS ?> days.</p>
+    <?php endif; ?>
 
     <h2>Third-party services</h2>
     <p>To display this website, your browser connects to these services, which receive your IP address as part of normal web traffic:</p>
     <ul>
+      <?php if ($static): ?><li><strong>GitHub Pages</strong> (GitHub): hosts this website</li><?php endif; ?>
       <li><strong>Google Fonts</strong> (Google): website fonts</li>
       <li><strong>cdnjs</strong> (Cloudflare): map software, loaded only when you use the GPS demo</li>
       <li><strong>OpenStreetMap</strong>: map images, loaded only when you use the GPS demo</li>
@@ -71,12 +85,12 @@
     <p>If you are unhappy with how we handle your data, you can complain to the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">ico.org.uk</a> or on 0303 123 1113.</p>
 
     <h2>Security</h2>
-    <p>We take reasonable technical and organisational measures to protect your data, including restricted, password-protected access to stored locations.</p>
+    <p>We take reasonable technical and organisational measures to protect your data<?= $static ? '' : ', including restricted, password-protected access to stored locations and enquiries' ?>.</p>
 
     <h2>Changes to this policy</h2>
     <p>We may update this policy from time to time. The latest version will always be on this page.</p>
 
-    <p style="margin-top:40px"><a href="index.php">← Back to home</a></p>
+    <p style="margin-top:40px"><a href="<?= $home ?>">← Back to home</a></p>
   </main>
   <footer>© <?= date('Y') ?> XGTECH Ltd. All rights reserved.</footer>
 </body>

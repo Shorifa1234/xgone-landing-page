@@ -8,7 +8,11 @@ $fields  = ['name' => '', 'company' => '', 'email' => '', 'phone' => '', 'indust
 function e($s) { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function oneline($s) { return trim(str_replace(["\r", "\n", "%0a", "%0d"], ' ', (string)$s)); }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// XG_STATIC is defined by build-static.php when building the GitHub Pages (HTML-only) version
+$static     = defined('XG_STATIC');
+$privacyUrl = $static ? 'privacy.html' : 'privacy.php';
+
+if (!$static && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
   foreach ($fields as $k => $v) { $fields[$k] = trim((string)($_POST[$k] ?? '')); }
 
   if (!empty($_POST['website'])) {            // honeypot: bots fill this, people don't
@@ -464,10 +468,16 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
             <div class="gps-stat"><small>Accuracy</small><strong id="gps-acc">—</strong></div>
             <div class="gps-stat"><small>Last update</small><strong id="gps-time">—</strong></div>
           </div>
-          <label class="consent"><input type="checkbox" id="gps-consent"><span><strong>Optional:</strong> share my location with XGTECH. I agree to my location being stored for <?= LOC_RETENTION_DAYS ?> days, as explained in the <a href="privacy.php#location">Privacy Policy</a>.</span></label>
+          <?php if (!$static): ?>
+          <label class="consent"><input type="checkbox" id="gps-consent"><span><strong>Optional:</strong> share my location with XGTECH. I agree to my location being stored for <?= LOC_RETENTION_DAYS ?> days, as explained in the <a href="<?= $privacyUrl ?>#location">Privacy Policy</a>.</span></label>
+          <?php endif; ?>
           <div class="gps-status" id="gps-status" role="status"></div>
+          <?php if (!$static): ?>
           <button class="linkbtn" id="gps-delete" type="button" hidden>🗑 Delete my shared location</button>
           <p class="gps-note">🔒 If you leave the box unticked, your location stays in your browser and is never sent to XGTECH.</p>
+          <?php else: ?>
+          <p class="gps-note">🔒 Your location stays in your browser. It is only shown to you and is never saved or sent anywhere.</p>
+          <?php endif; ?>
         </div>
         <div class="gps-map reveal">
           <div class="gps-empty" id="gps-empty"><div><div class="pin">📍</div><p>Click <strong>“Show my location”</strong> to see yourself on the map.</p></div></div>
@@ -559,7 +569,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           </ul>
         </div>
 
-        <form method="post" action="#contact" class="reveal" novalidate>
+        <form method="post" action="#contact" class="reveal" novalidate id="demo-form"<?= $static ? ' data-mailto="info@xgtech.co.uk"' : '' ?>>
           <?php if ($sent): ?>
             <div class="alert ok" role="status"><strong>Thank you!</strong> Your message has been sent. Our team will be in touch shortly.</div>
           <?php elseif ($errors): ?>
@@ -583,7 +593,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           </div>
           <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
           <div class="form-foot">
-            <small>No obligation. See our <a href="privacy.php">Privacy Policy</a>.</small>
+            <small>No obligation.<?= $static ? ' This opens your email app with your request filled in.' : '' ?> See our <a href="<?= $privacyUrl ?>">Privacy Policy</a>.</small>
             <button class="btn" type="submit">Request Your Free Demo →</button>
           </div>
         </form>
@@ -615,7 +625,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         <div><h4>XGOne</h4><ul><li><a href="#xgone">Features</a></li><li><a href="#benefits">Benefits</a></li><li><a href="#faq">FAQ</a></li><li><a href="https://www.xgone.co.uk" target="_blank" rel="noopener">xgone.co.uk</a></li></ul></div>
         <div><h4>Get in touch</h4><ul><li><a href="tel:+441512461103">0151 246 1103</a></li><li><a href="mailto:info@xgtech.co.uk">info@xgtech.co.uk</a></li></ul></div>
       </div>
-      <div class="foot-bottom"><span>© <?= date('Y') ?> XGTECH Ltd. All rights reserved.</span><span><a href="privacy.php">Privacy Policy</a> · XGOne by XGTECH Ltd</span></div>
+      <div class="foot-bottom"><span>© <?= date('Y') ?> XGTECH Ltd. All rights reserved.</span><span><a href="<?= $privacyUrl ?>">Privacy Policy</a> · XGOne by XGTECH Ltd</span></div>
     </div>
   </footer>
 
@@ -649,11 +659,11 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       // ids of locations this browser shared, so the visitor can delete them later
       const KEY = 'xgtech_shared_location_ids';
       function getIds() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-      function setIds(ids) { try { localStorage.setItem(KEY, JSON.stringify(ids)); } catch (e) {} delBtn.hidden = ids.length === 0; }
+      function setIds(ids) { try { localStorage.setItem(KEY, JSON.stringify(ids)); } catch (e) {} if (delBtn) delBtn.hidden = ids.length === 0; }
       setIds(getIds());
 
       async function shareLocation(pos) {
-        if (shared || !consentBox.checked) return;
+        if (shared || !consentBox || !consentBox.checked) return;
         shared = true;   // one save per tracking session
         try {
           const res = await fetch('api-location.php', {
@@ -670,9 +680,9 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         }
       }
 
-      consentBox.addEventListener('change', () => { if (consentBox.checked && watchId !== null && lastPos) shareLocation(lastPos); });
+      if (consentBox) consentBox.addEventListener('change', () => { if (consentBox.checked && watchId !== null && lastPos) shareLocation(lastPos); });
 
-      delBtn.addEventListener('click', async () => {
+      if (delBtn) delBtn.addEventListener('click', async () => {
         const ids = getIds(); if (!ids.length) return;
         try {
           const res = await fetch('api-location.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'delete', ids }) });
@@ -747,6 +757,32 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         first = true; shared = false;
         watchId = navigator.geolocation.watchPosition(update, fail, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
         btn.textContent = '⏹ Stop tracking';
+      });
+    })();
+
+    // Static (GitHub Pages) version: the demo form opens the visitor's email app instead of posting to PHP
+    (function () {
+      const form = document.getElementById('demo-form');
+      if (!form || !form.dataset.mailto) return;
+      form.addEventListener('submit', ev => {
+        ev.preventDefault();
+        const v = n => (form.elements[n] ? form.elements[n].value.trim() : '');
+        const box = form.querySelector('.alert') || form.insertBefore(document.createElement('div'), form.firstChild);
+        const problems = [];
+        if (!v('name')) problems.push('Please enter your name.');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) problems.push('Please enter a valid email address.');
+        if (v('message').length < 5) problems.push('Please tell us a little about what you need.');
+        if (problems.length) {
+          box.className = 'alert err'; box.setAttribute('role', 'alert');
+          box.innerHTML = '<ul>' + problems.map(p => '<li>' + p + '</li>').join('') + '</ul>';
+          return;
+        }
+        const body = 'Name: ' + v('name') + '\nCompany: ' + v('company') + '\nEmail: ' + v('email') +
+                     '\nPhone: ' + v('phone') + '\nIndustry: ' + v('industry') + '\n\n' + v('message');
+        const subject = 'XGOne demo request: ' + v('name') + (v('company') ? ' (' + v('company') + ')' : '');
+        window.location.href = 'mailto:' + form.dataset.mailto + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        box.className = 'alert ok'; box.setAttribute('role', 'status');
+        box.innerHTML = '<strong>Almost done!</strong> Your email app should open with your request. Just press Send. If nothing opened, email us at <a href="mailto:info@xgtech.co.uk">info@xgtech.co.uk</a> or call 0151 246 1103.';
       });
     })();
 

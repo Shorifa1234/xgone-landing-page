@@ -28,5 +28,16 @@ php -S 127.0.0.1:8000
 ```
 Then open http://127.0.0.1:8000.
 
+## GitHub Pages (static demo)
+GitHub Pages cannot run PHP, so the `docs/` folder holds an HTML-only build of the site:
+- The demo form opens the visitor's email app instead of saving to the database.
+- The GPS demo only shows the visitor their own location. Nothing is stored.
+
+After changing `index.php` or `privacy.php`, rebuild it:
+```
+php build-static.php
+```
+To publish, open **Settings → Pages** in the repo, choose **Deploy from a branch**, then select **main** and **/docs**.
+
 ## Before going live
 Fill in the `[ADD …]` placeholders in `privacy.php`: the registered address, company number and ICO number.

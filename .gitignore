@@ -1,0 +1,12 @@
+# Private settings (passwords, DB and SMTP login). Copy config.example.php to config.php.
+config.php
+
+# Old local file storage (now uses MySQL)
+data/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log

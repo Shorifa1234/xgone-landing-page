@@ -26,8 +26,13 @@ foreach ($pages as $src => $dest) {
   file_put_contents("$out/$dest", $html);
   echo "built docs/$dest (" . strlen($html) . " bytes)\n";
 }
-// Copy images used by the pages
-foreach (glob($root . '/*.{png,jpg,jpeg,svg,webp,ico}', GLOB_BRACE) as $img) {
+// Copy images used by the pages, and remove old copies of images that were renamed or deleted
+$imgPattern = '/*.{png,jpg,jpeg,gif,svg,webp,ico}';
+$current = array_map('basename', glob($root . $imgPattern, GLOB_BRACE));
+foreach (glob($out . $imgPattern, GLOB_BRACE) as $old) {
+  if (!in_array(basename($old), $current, true)) { unlink($old); echo 'removed docs/' . basename($old) . "\n"; }
+}
+foreach (glob($root . $imgPattern, GLOB_BRACE) as $img) {
   copy($img, $out . '/' . basename($img));
   echo 'copied docs/' . basename($img) . "\n";
 }

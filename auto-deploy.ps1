@@ -48,8 +48,18 @@ function Invoke-Deploy {
   $changes = & $git status --porcelain
   if (-not $changes) { Write-Log 'No real changes to publish.'; return }
 
-  $names = ($changes | ForEach-Object { $_.Substring(3) } | Select-Object -First 5) -join ', '
-  & $git commit -q -m "Auto update: $names" 2>&1 | Out-Null
+  # File names with spaces come back quoted ("a b.jpg"). Strip the quotes for the message,
+  # and pass the message through a file so special characters can't break the git command.
+  $names = ($changes | ForEach-Object { $_.Substring(3).Trim('"') } | Select-Object -First 5) -join ', '
+  $msgFile = Join-Path ([IO.Path]::GetTempPath()) 'xgtech-autodeploy-msg.txt'
+  [IO.File]::WriteAllText($msgFile, "Auto update: $names", (New-Object Text.UTF8Encoding $false))
+  $commitOut = & $git commit -q -F $msgFile 2>&1
+  Remove-Item $msgFile -ErrorAction SilentlyContinue
+  if ($LASTEXITCODE -ne 0) {
+    Write-Log 'Commit FAILED, nothing was pushed:' 'Red'
+    $commitOut | ForEach-Object { Write-Host "    $_" -ForegroundColor Red }
+    return
+  }
   Write-Log "Committed: $names"
 
   $env:GCM_INTERACTIVE = 'auto'

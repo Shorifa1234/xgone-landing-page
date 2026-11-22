@@ -120,7 +120,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     /* Hero */
     .hero{position:relative;background:radial-gradient(900px 500px at 85% 10%,rgba(101,181,28,.18),transparent 60%),linear-gradient(115deg,var(--navy3),var(--navy) 65%,#0d3976);color:#fff;padding:88px 0 96px;overflow:hidden}
     .hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none}
-    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
     .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 14px 6px 8px;border-radius:999px;font-size:13px;color:#dfe8f6}
     .pill b{background:var(--green);color:#fff;border-radius:999px;padding:2px 9px;font-size:11px;letter-spacing:.5px}
     h1{font-size:clamp(38px,5.2vw,64px);line-height:1.05;letter-spacing:-2px;margin:20px 0 20px;font-weight:800}
@@ -130,32 +130,25 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     .hero-points{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:32px;color:#c9d6ea;font-size:14px}
     .hero-points span:before{content:"✓";color:var(--green2);font-weight:800;margin-right:8px}
 
-    /* Dashboard mock */
-    .dash-wrap{position:relative}
-    .dashboard{background:#f9fbff;border-radius:18px;padding:16px;box-shadow:0 30px 70px rgba(0,0,0,.45);color:var(--ink);border:1px solid rgba(255,255,255,.4)}
-    .dash-top{display:flex;align-items:center;gap:6px;padding:2px 4px 14px}
-    .dash-top i{width:10px;height:10px;border-radius:50%;background:#e3e8f0}.dash-top i:nth-child(1){background:#ff6b6b}.dash-top i:nth-child(2){background:#ffc145}.dash-top i:nth-child(3){background:#53c26a}
-    .dash-top strong{margin-left:10px;color:var(--navy);font-size:14px}
-    .dash-top em{margin-left:auto;font-style:normal;font-size:11px;color:#2c8c49;background:#e6f5e9;padding:3px 9px;border-radius:999px;font-weight:700}
-    .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .metric,.panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
-    .metric small,.panel small{color:#718096;font-size:11px;display:block}
-    .metric strong{display:block;font-size:20px;color:var(--navy);line-height:1.3}
-    .panel{grid-column:span 4}
-    .panel-head{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--navy)}
-    .bars{height:84px;display:flex;align-items:flex-end;gap:8px;margin-top:10px}
-    .bars i{flex:1;background:linear-gradient(var(--green),#2c8c49);border-radius:5px 5px 0 0;transform-origin:bottom;animation:grow 1s ease-out both}
-    .bars i:nth-child(even){background:linear-gradient(#2f5fae,var(--navy))}
-    @keyframes grow{from{transform:scaleY(0)}}
-    .rows{display:grid;gap:7px;margin-top:8px}
-    .row{display:flex;align-items:center;gap:10px;font-size:12px}
-    .row span{flex:0 0 92px;color:var(--muted)}
-    .row .track{flex:1;height:7px;background:#edf1f7;border-radius:9px;overflow:hidden}
-    .row .track b{display:block;height:100%;background:var(--green);border-radius:9px}
+    /* Dual dashboard screenshots */
+    .dash-wrap{position:relative;padding:4px 0 8px}
+    .shot{margin:0;background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.35);box-shadow:0 30px 70px rgba(0,0,0,.45);transition:transform .35s ease}
+    .shot img{display:block;width:100%;height:auto}
+    .shot a{display:block;cursor:zoom-in}
+    .shot-bar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:#eef2f7;border-bottom:1px solid #dde4ee;font-size:11.5px;font-weight:700;color:var(--navy);white-space:nowrap}
+    .shot-bar i{width:9px;height:9px;border-radius:50%;flex:none;background:#e3e8f0}
+    .shot-bar i:nth-child(1){background:#ff6b6b}.shot-bar i:nth-child(2){background:#ffc145}.shot-bar i:nth-child(3){background:#53c26a}
+    .shot-bar span{margin-left:8px;overflow:hidden;text-overflow:ellipsis}
+    .shot-bar em{margin-left:auto;font-style:normal;font-size:10.5px;color:#2c8c49;background:#e6f5e9;padding:2px 8px;border-radius:999px}
+    .shot-back{width:84%;margin-left:auto;opacity:.97}
+    .shot-front{position:relative;z-index:2;width:84%;margin-top:-20%;box-shadow:0 34px 80px rgba(0,0,0,.55)}
+    .dash-wrap:hover .shot-back{transform:translate(6px,-6px)}
+    .dash-wrap:hover .shot-front{transform:translate(-6px,6px)}
     .float{position:absolute;background:#fff;color:var(--ink);border-radius:12px;padding:10px 14px;box-shadow:0 14px 34px rgba(0,0,0,.25);font-size:12px;display:flex;align-items:center;gap:10px;animation:bob 5s ease-in-out infinite}
     .float .dot{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--green-pale);font-size:16px}
     .float b{display:block;color:var(--navy);font-size:13px}
-    .float.f1{left:-28px;bottom:42px}.float.f2{right:-18px;top:-20px;animation-delay:-2.5s}
+    .float{z-index:3}
+    .float.f2{right:-16px;bottom:-6px;animation-delay:-2.5s}
     @keyframes bob{50%{transform:translateY(-8px)}}
 
     /* Industry strip */
@@ -307,7 +300,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
       .hero{padding:64px 0 80px}
       .dash-wrap{max-width:560px}
-      .float.f1{left:-8px}.float.f2{right:-4px}
+      .float.f2{right:-4px}
       .features{grid-template-columns:repeat(2,1fr)}
       .steps{grid-template-columns:1fr}
       .menu-btn{display:block}
@@ -323,7 +316,8 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       .actions .btn{flex:1;justify-content:center}
       .features,.ind-grid,.benefit-grid,.about-cards,.form-grid,.foot-grid{grid-template-columns:1fr}
       .about-card:nth-child(2),.about-card:nth-child(4){transform:none}
-      .dash-grid{grid-template-columns:repeat(2,1fr)}.panel{grid-column:span 2}
+      .shot-back,.shot-front{width:90%}
+      .shot-front{margin-top:-24%}
       .float{display:none}
       form{padding:22px}
     }
@@ -363,30 +357,16 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           </div>
         </div>
 
-        <div class="dash-wrap" aria-hidden="true">
-          <div class="dashboard">
-            <div class="dash-top"><i></i><i></i><i></i><strong>XGOne Dashboard</strong><em>● Live</em></div>
-            <div class="dash-grid">
-              <div class="metric"><small>Projects</small><strong>24</strong></div>
-              <div class="metric"><small>Tasks</small><strong>128</strong></div>
-              <div class="metric"><small>Staff</small><strong>56</strong></div>
-              <div class="metric"><small>Invoiced</small><strong>£82.5k</strong></div>
-              <div class="panel">
-                <div class="panel-head"><strong>Business performance</strong><small>Last 8 months</small></div>
-                <div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:38%"></i><i style="height:60%"></i><i style="height:52%"></i><i style="height:78%"></i><i style="height:70%"></i><i style="height:95%"></i></div>
-              </div>
-              <div class="panel">
-                <div class="panel-head"><strong>Project progress</strong><small>This week</small></div>
-                <div class="rows">
-                  <div class="row"><span>Site refit</span><div class="track"><b style="width:82%"></b></div></div>
-                  <div class="row"><span>HVAC install</span><div class="track"><b style="width:56%"></b></div></div>
-                  <div class="row"><span>Maintenance</span><div class="track"><b style="width:34%"></b></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="float f1"><span class="dot">📍</span><div><b>12 engineers on site</b>Live GPS tracking</div></div>
-          <div class="float f2"><span class="dot">✅</span><div><b>Invoice paid</b>£4,250 received</div></div>
+        <div class="dash-wrap">
+          <figure class="shot shot-back">
+            <div class="shot-bar"><i></i><i></i><i></i><span>XGOne · Manage Projects</span></div>
+            <a href="dashboard1%20(2).jpeg" target="_blank" rel="noopener" title="View full size"><img src="dashboard1%20(2).jpeg" alt="XGOne Manage Projects screen with project cards, members and due dates" width="1600" height="728"></a>
+          </figure>
+          <figure class="shot shot-front">
+            <div class="shot-bar"><i></i><i></i><i></i><span>XGOne · Dashboard</span><em>● Live</em></div>
+            <a href="dashboard1.jpeg" target="_blank" rel="noopener" title="View full size"><img src="dashboard1.jpeg" alt="XGOne dashboard showing employees, projects, tasks, expenses and project status" width="1600" height="727"></a>
+          </figure>
+          <div class="float f2"><span class="dot">📊</span><div><b>HR &amp; Sales Reporting</b>Real-time insights</div></div>
         </div>
       </div>
     </section>

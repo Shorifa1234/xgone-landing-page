@@ -347,7 +347,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         <div>
           <span class="pill"><b>XGOne</b> All-in-one business management platform</span>
           <h1>Technology that<br><span>empowers your business.</span></h1>
-          <p class="lead">XGTECH builds XGOne — one connected system to manage your people, projects, stock, customers and finances, so you spend less time chasing updates and more time growing.</p>
+          <p class="lead">XGTECH builds XGOne — one connected system to manage your people, projects, HR &amp; Sales Reporting, Communication, Dual Dashboard so you spend less time chasing updates and more time growing.</p>
           <div class="actions">
             <a class="btn" href="#contact">Arrange a Free Demo →</a>
             <a class="btn ghost" href="#xgone">Explore XGOne</a>

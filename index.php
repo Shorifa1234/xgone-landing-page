@@ -11,6 +11,7 @@ function oneline($s) { return trim(str_replace(["\r", "\n", "%0a", "%0d"], ' ', 
 // XG_STATIC is defined by build-static.php when building the GitHub Pages (HTML-only) version
 $static     = defined('XG_STATIC');
 $privacyUrl = $static ? 'privacy.html' : 'privacy.php';
+$bookingUrl = 'https://www.xgtech.co.uk/booking.html';   // "Book a Demo" buttons go to the demo scheduling page
 
 if (!$static && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
   foreach ($fields as $k => $v) { $fields[$k] = trim((string)($_POST[$k] ?? '')); }
@@ -341,7 +342,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         <a href="#industries">Industries</a>
         <a href="#benefits">Benefits</a>
         <a href="#faq">FAQ</a>
-        <a class="btn" href="#contact">Book a Demo</a>
+        <a class="btn" href="<?= $bookingUrl ?>">Book a Demo</a>
       </nav>
     </div>
   </header>
@@ -608,7 +609,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
             <h2>Spend less time chasing updates.</h2>
             <p>Get more control of your business with XGOne.</p>
           </div>
-          <a class="btn" href="#contact">Book a Demo →</a>
+          <a class="btn" href="<?= $bookingUrl ?>">Book a Demo →</a>
         </div>
       </div>
     </div>

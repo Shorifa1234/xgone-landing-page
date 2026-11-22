@@ -37,6 +37,12 @@ After changing `index.php` or `privacy.php`, rebuild it:
 ```
 php build-static.php
 ```
+### Auto deploy
+`auto-deploy.ps1` watches the project. After you save a change, it rebuilds `docs/`, commits and pushes automatically, so the live site updates in about a minute. In VS Code it starts by itself when the folder opens (`.vscode/tasks.json`). You can also run it by hand:
+```
+powershell -ExecutionPolicy Bypass -File auto-deploy.ps1
+```
+
 To publish, open **Settings → Pages** in the repo, choose **Deploy from a branch**, then select **main** and **/docs**.
 
 ## Before going live

@@ -361,12 +361,12 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
 
         <div class="dash-wrap">
           <figure class="shot shot-back">
-            <div class="shot-bar"><i></i><i></i><i></i><span>XGOne · Manage Projects</span></div>
-            <a href="dashboard1%20(2).jpeg" target="_blank" rel="noopener" title="View full size"><img src="dashboard1%20(2).jpeg" alt="XGOne Manage Projects screen with project cards, members and due dates" width="1600" height="728"></a>
+            <div class="shot-bar"><i></i><i></i><i></i><span>XGOne · Project Overview</span></div>
+            <a href="Dashboard3.jpeg" target="_blank" rel="noopener" title="View full size"><img src="Dashboard3.jpeg" alt="XGOne project overview with tasks, budget, expenses, progress and team members" width="1600" height="652"></a>
           </figure>
           <figure class="shot shot-front">
             <div class="shot-bar"><i></i><i></i><i></i><span>XGOne · Dashboard</span><em>● Live</em></div>
-            <a href="dashboard1.jpeg" target="_blank" rel="noopener" title="View full size"><img src="dashboard1.jpeg" alt="XGOne dashboard showing employees, projects, tasks, expenses and project status" width="1600" height="727"></a>
+            <a href="Dashboard4.jpeg" target="_blank" rel="noopener" title="View full size"><img src="Dashboard4.jpeg" alt="XGOne dashboard showing employees, projects, tasks, expenses and project status" width="1600" height="727"></a>
           </figure>
           <div class="float f2"><span class="dot">📊</span><div><b>HR &amp; Sales Reporting</b>Real-time insights</div></div>
         </div>

@@ -413,7 +413,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <button class="tab" role="tab" aria-selected="true" data-filter="all">All modules</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="ops">Operations</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="people">People</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="money">Sales &amp; Finance</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="money">HR &amp; Sales Reporting</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="platform">Platform</button>
         </div>
 

@@ -413,19 +413,19 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <button class="tab" role="tab" aria-selected="true" data-filter="all">All modules</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="ops">Operations</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="people">People</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="money">HR &amp; Sales Reporting</button>
+          <button class="tab" role="tab" aria-selected="false" data-filter="hrsales">HR &amp; Sales Reporting</button>
           <button class="tab" role="tab" aria-selected="false" data-filter="platform">Platform</button>
         </div>
 
         <div class="features">
           <article class="feature" data-cat="ops"><div class="ico">🏗</div><h3>Project Management</h3><p>Plan, schedule and track projects and tasks from start to finish.</p></article>
-          <article class="feature" data-cat="people"><div class="ico">👥</div><h3>Workforce Management</h3><p>Track staff, attendance, check-in/check-out and working hours.</p></article>
+          <article class="feature" data-cat="people hrsales"><div class="ico">👥</div><h3>Workforce Management</h3><p>Track staff, attendance, check-in/check-out and working hours.</p></article>
           <article class="feature" data-cat="people"><div class="ico">📍</div><h3>Live GPS Tracking</h3><p>See real-time location information for your team in the field.</p><a class="try" href="#gps-demo">Try it live →</a></article>
           <article class="feature" data-cat="ops"><div class="ico">📦</div><h3>Inventory &amp; Warehouse</h3><p>Manage stock, multiple warehouses and van inventory.</p></article>
-          <article class="feature" data-cat="money"><div class="ico">💷</div><h3>Finance &amp; Accounting</h3><p>Invoicing, expenses, payments and project profitability in one place.</p></article>
-          <article class="feature" data-cat="money"><div class="ico">🤝</div><h3>Customers &amp; Leads</h3><p>Manage customers, leads, follow-ups and proposals more easily.</p></article>
-          <article class="feature" data-cat="money"><div class="ico">✉️</div><h3>Marketing Automation</h3><p>Send SMS, email and WhatsApp campaigns and stay connected.</p></article>
-          <article class="feature" data-cat="ops"><div class="ico">📊</div><h3>Reports &amp; Dashboards</h3><p>Real-time reports and insights for better business decisions.</p></article>
+          <article class="feature" data-cat="ops"><div class="ico">💷</div><h3>Finance &amp; Accounting</h3><p>Invoicing, expenses, payments and project profitability in one place.</p></article>
+          <article class="feature" data-cat="hrsales"><div class="ico">🤝</div><h3>Customers &amp; Leads</h3><p>Manage customers, leads, follow-ups and proposals more easily.</p></article>
+          <article class="feature" data-cat="ops"><div class="ico">✉️</div><h3>Marketing Automation</h3><p>Send SMS, email and WhatsApp campaigns and stay connected.</p></article>
+          <article class="feature" data-cat="ops hrsales"><div class="ico">📊</div><h3>Reports &amp; Dashboards</h3><p>Real-time reports and insights for better business decisions.</p></article>
           <article class="feature" data-cat="platform"><div class="ico">📱</div><h3>Mobile &amp; Web Access</h3><p>Access your business anytime, anywhere, from a range of devices.</p></article>
           <article class="feature" data-cat="platform"><div class="ico">🌐</div><h3>Multi-language Support</h3><p>Available in English, Arabic and additional languages.</p></article>
           <article class="feature" data-cat="platform"><div class="ico">🛡️</div><h3>Secure &amp; Reliable</h3><p>Secure cloud hosting and daily backups protect your data.</p></article>
@@ -626,7 +626,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     tabs.forEach(t => t.addEventListener('click', () => {
       tabs.forEach(x => x.setAttribute('aria-selected', x === t));
       const f = t.dataset.filter;
-      feats.forEach(el => el.hidden = !(f === 'all' || el.dataset.cat === f));
+      feats.forEach(el => el.hidden = !(f === 'all' || el.dataset.cat.split(' ').includes(f)));
     }));
 
     // Live GPS demo (visitor's own location, shown only to them, never sent anywhere)

@@ -69,7 +69,7 @@ if (!$static && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
     }
   }
 }
-$industries = ['Construction', 'Property management', 'Field service', 'Engineering', 'Other'];
+$industries = ['Construction', 'Property management', 'Field service', 'Engineering', 'Facilities management', 'Other'];
 require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
 ?>
 <!DOCTYPE html>
@@ -78,7 +78,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>XGTECH Ltd | Technology That Empowers Your Business</title>
-  <meta name="description" content="XGTECH Ltd builds XGOne, an all-in-one business management platform for construction, property management, field service and engineering businesses.">
+  <meta name="description" content="XGTECH Ltd builds XGOne, an all-in-one business management platform for construction, property management, field service, engineering and facilities management businesses.">
   <meta property="og:title" content="XGTECH Ltd | Technology That Empowers Your Business">
   <meta property="og:description" content="Manage your people, projects, stock, customers and finances in one place with XGOne by XGTECH.">
   <meta property="og:type" content="website">
@@ -214,7 +214,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     @media(max-width:880px){.gps-grid{grid-template-columns:1fr}.gps-map{height:360px}}
 
     /* Industries */
-    .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
     .ind{position:relative;border-radius:var(--radius);padding:28px 24px;background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;overflow:hidden;min-height:240px;display:flex;flex-direction:column}
     .ind:after{content:"";position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:rgba(139,209,62,.12)}
     .ind .ico{font-size:34px;margin-bottom:14px}
@@ -224,7 +224,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     /* Benefits */
     .benefits{background:var(--navy2);color:#fff;position:relative;overflow:hidden}
     .benefits h2{color:#fff}.benefits .section-head p{color:#c6d3e8}
-    .benefit-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .benefit{padding:26px 20px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
     .benefit .num{font-size:13px;font-weight:800;color:var(--green2);letter-spacing:1px}
     .benefit b{display:block;font-size:18px;margin:8px 0 6px}
@@ -295,7 +295,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     @media(max-width:1020px){
       .features{grid-template-columns:repeat(3,1fr)}
       .benefit-grid{grid-template-columns:repeat(3,1fr)}
-      .ind-grid{grid-template-columns:repeat(2,1fr)}
+      .ind-grid{grid-template-columns:repeat(3,1fr)}
       .foot-grid{grid-template-columns:1fr 1fr}
     }
     @media(max-width:880px){
@@ -355,7 +355,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
             <a class="btn ghost" href="#xgone">Explore XGOne</a>
           </div>
           <div class="hero-points">
-            <span>Web &amp; mobile access</span><span>Secure cloud hosting</span><span>Customisable modules</span>
+            <span>Web &amp; mobile access</span><span>Secure cloud hosting</span><span>Customisable modules</span><span>Android &amp; iOS apps</span>
           </div>
         </div>
 
@@ -378,7 +378,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       <div class="wrap strip-inner">
         <p>Built for</p>
         <ul>
-          <li>🏗️ Construction</li><li>🏢 Property Management</li><li>🧰 Field Service</li><li>📡 Engineering</li>
+          <li>🏗️ Construction</li><li>🏢 Property Management</li><li>🧰 Field Service</li><li>📡 Engineering</li><li>🏬 Facilities Management</li>
         </ul>
       </div>
     </div>
@@ -424,7 +424,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <a class="feature feature-link" data-cat="people hrsales" href="https://www.xgtech.co.uk/XGOne.html"><div class="ico">👥</div><h3>Workforce Management</h3><p>Track staff, attendance, check-in/check-out and working hours.</p><span class="try">Learn more →</span></a>
           <article class="feature" data-cat="people"><div class="ico">📍</div><h3>Live GPS Tracking</h3><p>See real-time location information for your team in the field.</p><a class="try" href="#gps-demo">Try it live →</a></article>
           <a class="feature feature-link" data-cat="ops" href="https://www.xgtech.co.uk/stock_erp.html"><div class="ico">📦</div><h3>Inventory &amp; Warehouse</h3><p>Manage stock, multiple warehouses and van inventory.</p><span class="try">Learn more →</span></a>
-          <article class="feature" data-cat="ops"><div class="ico">💷</div><h3>Finance &amp; Accounting</h3><p>Invoicing, expenses, payments and project profitability in one place.</p></article>
+          <article class="feature" data-cat="ops hrsales"><div class="ico">📈</div><h3>HR &amp; Sales Reporting</h3><p>Track staff, sales and pipeline performance with clear, real-time reports.</p></article>
           <article class="feature" data-cat="hrsales"><div class="ico">🤝</div><h3>Customers &amp; Leads</h3><p>Manage customers, leads, follow-ups and proposals more easily.</p></article>
           <article class="feature" data-cat="ops"><div class="ico">✉️</div><h3>Marketing Automation</h3><p>Send SMS, email and WhatsApp campaigns and stay connected.</p></article>
           <article class="feature" data-cat="ops hrsales"><div class="ico">📊</div><h3>Reports &amp; Dashboards</h3><p>Real-time reports and insights for better business decisions.</p></article>
@@ -481,6 +481,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <div class="ind reveal"><div class="ico">🏢</div><h3>Property Management</h3><p>Coordinate maintenance jobs, contractors and tenants from one place.</p></div>
           <div class="ind reveal"><div class="ico">🧰</div><h3>Field Service</h3><p>Dispatch engineers, track jobs live and manage van stock on the move.</p></div>
           <div class="ind reveal"><div class="ico">📡</div><h3>Engineering</h3><p>Manage complex projects, teams and project profitability with clear reporting.</p></div>
+          <div class="ind reveal"><div class="ico">🏬</div><h3>Facilities Management</h3><p>Schedule planned and reactive maintenance, manage assets and keep every site running smoothly.</p></div>
         </div>
       </div>
     </section>
@@ -495,10 +496,11 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         </div>
         <div class="benefit-grid">
           <div class="benefit reveal"><span class="num">01</span><b>Save Time</b><p>Reduce repetitive administration.</p></div>
-          <div class="benefit reveal"><span class="num">02</span><b>Improve Productivity</b><p>Help teams work more efficiently.</p></div>
-          <div class="benefit reveal"><span class="num">03</span><b>Control Costs</b><p>Reduce waste and improve oversight.</p></div>
-          <div class="benefit reveal"><span class="num">04</span><b>Gain Visibility</b><p>See what is happening across your business.</p></div>
-          <div class="benefit reveal"><span class="num">05</span><b>Grow Confidently</b><p>Build a stronger foundation for growth.</p></div>
+          <div class="benefit reveal"><span class="num">02</span><b>Save Money</b><p>Reduce operational cost.</p></div>
+          <div class="benefit reveal"><span class="num">03</span><b>Improve Productivity</b><p>Help teams work more efficiently.</p></div>
+          <div class="benefit reveal"><span class="num">04</span><b>Control Costs</b><p>Reduce waste and improve oversight.</p></div>
+          <div class="benefit reveal"><span class="num">05</span><b>Gain Visibility</b><p>See what is happening across your business.</p></div>
+          <div class="benefit reveal"><span class="num">06</span><b>Grow Confidently</b><p>Build a stronger foundation for growth.</p></div>
         </div>
       </div>
     </section>
@@ -528,7 +530,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         </div>
         <div class="faq-list">
           <details class="reveal"><summary>What is XGOne?</summary><p>XGOne is an all-in-one business management platform from XGTECH Ltd. It brings projects, workforce, stock, customers, marketing and finance together in one system.</p></details>
-          <details class="reveal"><summary>Who is XGOne for?</summary><p>It is built for construction, property management, field service and engineering businesses — especially teams split between the office, the warehouse and the field.</p></details>
+          <details class="reveal"><summary>Who is XGOne for?</summary><p>It is built for construction, property management, field service, engineering and facilities management businesses — especially teams split between the office, the warehouse and the field.</p></details>
           <details class="reveal"><summary>Can I use it on mobile?</summary><p>Yes. XGOne is available on web and mobile, so your team can access it anytime, anywhere.</p></details>
           <details class="reveal"><summary>Can it be customised for my business?</summary><p>Yes. XGOne offers custom modules so the system can fit the way your business works.</p></details>
           <details class="reveal"><summary>Is my data secure?</summary><p>XGOne uses secure cloud hosting with daily backups to help protect your business data.</p></details>

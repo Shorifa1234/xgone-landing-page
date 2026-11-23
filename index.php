@@ -185,6 +185,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     .feature{padding:26px 22px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;transition:transform .2s,box-shadow .2s,border-color .2s}
     .feature:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#cfe5b8}
     .feature[hidden]{display:none}
+    a.feature{display:block;text-decoration:none;color:inherit;cursor:pointer}
     .feature .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--green-pale);color:#438c12;font-size:22px;margin-bottom:16px}
     .feature h3{font-size:17px;color:var(--navy);line-height:1.3;margin:0 0 8px}
     .feature p{font-size:14.5px;color:var(--muted);margin:0}
@@ -421,7 +422,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <article class="feature" data-cat="ops"><div class="ico">🏗</div><h3>Project Management</h3><p>Plan, schedule and track projects and tasks from start to finish.</p></article>
           <article class="feature" data-cat="people hrsales"><div class="ico">👥</div><h3>Workforce Management</h3><p>Track staff, attendance, check-in/check-out and working hours.</p></article>
           <article class="feature" data-cat="people"><div class="ico">📍</div><h3>Live GPS Tracking</h3><p>See real-time location information for your team in the field.</p><a class="try" href="#gps-demo">Try it live →</a></article>
-          <article class="feature" data-cat="ops"><div class="ico">📦</div><h3>Inventory &amp; Warehouse</h3><p>Manage stock, multiple warehouses and van inventory.</p></article>
+          <a class="feature feature-link" data-cat="ops" href="https://www.xgtech.co.uk/stock_erp.html"><div class="ico">📦</div><h3>Inventory &amp; Warehouse</h3><p>Manage stock, multiple warehouses and van inventory.</p><span class="try">Learn more →</span></a>
           <article class="feature" data-cat="ops"><div class="ico">💷</div><h3>Finance &amp; Accounting</h3><p>Invoicing, expenses, payments and project profitability in one place.</p></article>
           <article class="feature" data-cat="hrsales"><div class="ico">🤝</div><h3>Customers &amp; Leads</h3><p>Manage customers, leads, follow-ups and proposals more easily.</p></article>
           <article class="feature" data-cat="ops"><div class="ico">✉️</div><h3>Marketing Automation</h3><p>Send SMS, email and WhatsApp campaigns and stay connected.</p></article>

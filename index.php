@@ -166,15 +166,6 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12;letter-spacing:-1.2px;color:var(--navy);margin:0 0 16px;font-weight:800}
     .section-head p{color:var(--muted);font-size:17.5px;margin:0}
 
-    /* About */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-    .about p{color:var(--muted);font-size:17px}
-    .about-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .about-card{padding:24px;border-radius:var(--radius);background:var(--pale);border:1px solid var(--line)}
-    .about-card:nth-child(2){transform:translateY(24px)}.about-card:nth-child(4){transform:translateY(24px)}
-    .about-card .ico{font-size:26px;margin-bottom:8px}
-    .about-card h3{margin:0 0 6px;font-size:17px;color:var(--navy)}
-    .about-card p{margin:0;font-size:14px}
 
     /* Product / features */
     .product{background:var(--pale)}
@@ -299,7 +290,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       .foot-grid{grid-template-columns:1fr 1fr}
     }
     @media(max-width:880px){
-      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .hero-grid,.contact-grid{grid-template-columns:1fr}
       .hero{padding:64px 0 80px}
       .dash-wrap{max-width:560px}
       .float.f2{right:-4px}
@@ -316,8 +307,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       section{padding:72px 0}
       .lead{font-size:17px}
       .actions .btn{flex:1;justify-content:center}
-      .features,.ind-grid,.benefit-grid,.about-cards,.form-grid,.foot-grid{grid-template-columns:1fr}
-      .about-card:nth-child(2),.about-card:nth-child(4){transform:none}
+      .features,.ind-grid,.benefit-grid,.form-grid,.foot-grid{grid-template-columns:1fr}
       .shot-back,.shot-front{width:90%}
       .shot-front{margin-top:-24%}
       .float{display:none}
@@ -332,7 +322,6 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
       <a class="brand" href="#top" aria-label="XGTECH home"><img src="logo-1.png" alt="XGTECH" width="158" height="44"></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu">☰</button>
       <nav class="navlinks" id="menu" aria-label="Main navigation">
-        <a href="#about">About</a>
         <a href="#xgone">XGOne</a>
         <a href="#industries">Industries</a>
         <a href="#benefits">Benefits</a>
@@ -382,25 +371,6 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
         </ul>
       </div>
     </div>
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-      <div class="wrap about-grid">
-        <div class="reveal">
-          <span class="eyebrow">About XGTECH</span>
-          <h2>Software shaped around the way real businesses work</h2>
-          <p>XGTECH Ltd is a UK technology company focused on one goal: giving growing businesses the tools to run their operation with clarity and control.</p>
-          <p>Our platform, XGOne, brings together the everyday activities that usually live in separate spreadsheets, apps and inboxes — so your office, warehouse and field teams all work from the same picture.</p>
-          <a class="btn dark" href="#contact" style="margin-top:10px">Talk to our team</a>
-        </div>
-        <div class="about-cards reveal">
-          <div class="about-card"><div class="ico">🔗</div><h3>Connected</h3><p>One system instead of disconnected tools.</p></div>
-          <div class="about-card"><div class="ico">⚙️</div><h3>Customisable</h3><p>Custom modules to fit your business needs.</p></div>
-          <div class="about-card"><div class="ico">🔒</div><h3>Secure</h3><p>Secure cloud hosting with daily backups.</p></div>
-          <div class="about-card"><div class="ico">🌍</div><h3>Multi-language</h3><p>English, Arabic and additional languages.</p></div>
-        </div>
-      </div>
-    </section>
 
     <!-- PRODUCT -->
     <section class="product" id="xgone">
@@ -605,7 +575,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
           <a class="brand" href="#top" aria-label="XGTECH home"><img src="logo-1.png" alt="XGTECH" width="158" height="44" loading="lazy"></a>
           <p style="margin:0;max-width:320px">Technology That Empowers Your Business. Makers of XGOne, the all-in-one business management platform.</p>
         </div>
-        <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#industries">Industries</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#industries">Industries</a></li><li><a href="#contact">Contact</a></li></ul></div>
         <div><h4>XGOne</h4><ul><li><a href="#xgone">Features</a></li><li><a href="#benefits">Benefits</a></li><li><a href="#faq">FAQ</a></li><li><a href="https://www.xgone.co.uk" target="_blank" rel="noopener">xgone.co.uk</a></li></ul></div>
         <div><h4>Get in touch</h4><ul><li><a href="tel:+441512461103">0151 246 1103</a></li><li><a href="mailto:info@xgtech.co.uk">info@xgtech.co.uk</a></li><li><a class="social" href="https://www.linkedin.com/company/xgtech-uk/" target="_blank" rel="noopener" aria-label="XGTECH on LinkedIn (opens in a new tab)"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a></li></ul></div>
       </div>

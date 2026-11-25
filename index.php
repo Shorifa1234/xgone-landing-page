@@ -123,6 +123,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
     .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 14px 6px 8px;border-radius:999px;font-size:13px;color:#dfe8f6}
     .pill b{background:var(--green);color:#fff;border-radius:999px;padding:2px 9px;font-size:11px;letter-spacing:.5px}
+    .pill-logo{display:block;height:20px;width:auto}
     h1{font-size:clamp(38px,5.2vw,64px);line-height:1.05;letter-spacing:-2px;margin:20px 0 20px;font-weight:800}
     h1 span{color:var(--green2)}
     .lead{font-size:19px;color:#d9e3f3;max-width:580px;margin:0 0 32px}
@@ -336,7 +337,7 @@ require_once __DIR__ . '/db.php';   // for LOC_RETENTION_DAYS
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="pill"><b>XGOne</b> All-in-one business management platform</span>
+          <span class="pill"><img class="pill-logo" src="xgone-logo.png" alt="XGOne" width="111" height="20"> All-in-one business management platform</span>
           <h1>Technology that<br><span>empowers your business.</span></h1>
           <p class="lead">XGTECH builds XGOne — one connected system to manage your people, projects, HR &amp; Sales Reporting, Communication, Dual Dashboard so you spend less time chasing updates and more time growing.</p>
           <div class="actions">
